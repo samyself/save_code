@@ -1,52 +1,23 @@
-# Prerequisites
-*.d
+#include "stm32f10x.h"
+#include "led.h"
+#include "delay.h"
+#include "sys.h"
+#include "timer.h"
+#include "buzzer.h"
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+int main(void)
+{
+	
+ NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+ delay_init();
+	LED_Init();
+	BUZZER_Init();
+	TIMER3_Init(4999,7199);//72MHZ/（7199+1）=10000  10kHZ，（4999+1）/10000=0.5s
+	
+	while(1)
+	{
+		BUZZER=!BUZZER;
+		delay_ms(1000);
+	}
+	
+}
