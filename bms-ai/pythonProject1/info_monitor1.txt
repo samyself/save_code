@@ -1,0 +1,5 @@
+int V InitModule() 
+name: COM3	 description: Intel(R) Active Management Technology - SOL (COM3)	 hardware_id: PCI\VEN_8086&DEV_7AEB&SUBSYS_332C17AA&REV_11
+not find seril!
+CANOnBus
+LINOnBus
